@@ -12,7 +12,7 @@ export default class Notification {
     this.container.classList.add("notification-container");
   }
 
-  render() {
+  render({type,price}) {
     const template = `
 <div class="notification type-pepperoni">
   <button class="delete"></button>
@@ -21,5 +21,10 @@ export default class Notification {
     `;
 
     this.container.innerHTML = template;
+    document.querySelector(".notifications").appendChild(this.container);
+    this.container.querySelector(".delete").addEventListener("click",()=>{console.log("Delete button clicked"); this.empty();});
+  }
+  empty(){
+    this.container.innerHTML = "";
   }
 }
